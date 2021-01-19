@@ -1,0 +1,5 @@
+mat-card {
+    color: var(--secondary-color);
+    font-size: 2em;
+    background-color: rgba(20, 20, 20, 0.95);
+}

@@ -1,0 +1,13 @@
+.full-name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.first-name, .last-name {
+    flex-grow: 1;
+}
+
+.first-name {
+    margin-right: 5%;
+}
