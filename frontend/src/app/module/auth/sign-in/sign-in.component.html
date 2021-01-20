@@ -5,7 +5,7 @@
             <mat-card-content class="col-12">
                 <form [formGroup]="form" id="login-form">
                     <mat-form-field appearance="outline">
-                        <mat-label>Login</mat-label>
+                        <mat-label>Login or email</mat-label>
                         <input matInput formControlName="username">
                         <mat-error *ngIf="f.username.errors">
                             {{errorMessages.required}}
