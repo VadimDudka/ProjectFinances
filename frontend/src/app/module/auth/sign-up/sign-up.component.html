@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row">
+        <mat-card class="col-6">
+            <mat-card-title>Sign up</mat-card-title>
+            <mat-card-content class="col-12">
+                <form [formGroup]="form" id="sign-up-form">
+                    <div class="full-name">
+                        <mat-form-field class="first-name" appearance="outline">
+                            <mat-label>First name</mat-label>
+                            <input matInput formControlName="firstName">
+                            <mat-error *ngIf="f.firstName.errors">
+                                <div *ngIf="f.firstName.errors.minlength || f.firstName.errors.required">
+                                    {{errorMessages.minLength}}
+                                </div>
+                                <div *ngIf="f.firstName.errors.maxlength">
+                                    {{errorMessages.maxLength}}
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="last-name" appearance="outline">
+                            <mat-label>Last name</mat-label>
+                            <input matInput formControlName="lastName">
+                            <mat-error *ngIf="f.lastName.errors">
+                                <div *ngIf="f.lastName.errors.minlength || f.lastName.errors.required">
+                                    {{errorMessages.minLength}}
+                                </div>
+                                <div *ngIf="f.lastName.errors.maxlength">
+                                    {{errorMessages.maxLength}}
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Login</mat-label>
+                        <input matInput formControlName="username">
+                        <mat-error *ngIf="f.username.errors">
+                            <div *ngIf="f.username.errors.minlength || f.username.errors.required">
+                                {{errorMessages.minLength}}
+                            </div>
+                            <div *ngIf="f.username.errors.maxlength">
+                                {{errorMessages.maxLength}}
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-error *ngIf="f.email.errors">
+                            <div *ngIf="f.email.errors">
+                                {{errorMessages.emailValid}}
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="passwordMain">
+                        <button mat-icon-button matSuffix
+                                (click)="hidePassword = !hidePassword"
+                                [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hidePassword">
+                            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="f.passwordMain.errors">
+                            <div *ngIf="f.passwordMain.errors.minlength || f.passwordMain.errors.required">
+                                {{errorMessages.minLength}}
+                            </div>
+                            <div *ngIf="f.passwordMain.errors.maxlength">
+                                {{errorMessages.maxLength}}
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Confirm password</mat-label>
+                        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'"
+                               formControlName="passwordConfirm">
+                        <button mat-icon-button matSuffix
+                                (click)="hideConfirmPassword = !hideConfirmPassword"
+                                [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hideConfirmPassword">
+                            <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="f.passwordConfirm.errors">
+                            {{errorMessages.passwordConfirm}}
+                        </mat-error>
+                    </mat-form-field>
+                </form>
+                <mat-error class="main-error">
+                    <div *ngIf="duplicatedEmail">
+                        {{errorMessages.emailDuplicated}}
+                    </div>
+                    <div *ngIf="duplicatedUsername">
+                        {{errorMessages.usernameDuplicated}}
+                    </div>
+                </mat-error>
+                <div class="buttons">
+                    <button mat-flat-button class="main-button" color="primary" (click)="onMainClick()" [disabled]="waiting" form="sign-up-form" type="submit">
+                        <span *ngIf="!waiting">Sign up</span>
+                        <span *ngIf="waiting">Processing...</span>
+                    </button>
+                    <button mat-stroked-button class="secondary-button" color="primary" (click)="onSecondaryClick()">
+                        Login
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

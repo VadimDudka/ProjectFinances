@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --main-color: #9222B9;
+    --secondary-color: rgba(255, 255, 255, .9);;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: url("https://images.wallpaperscraft.com/image/stripes_lines_long_exposure_178941_3840x2400.jpg") center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+simple-snack-bar span {
+    margin:auto;
+    text-align: center;
+}
+
+.success-snackbar {
+    background-color: #002d10;
+    color: white;
+}
+
+.error-snackbar {
+    background-color: #470000;
+    color: white;
+}
