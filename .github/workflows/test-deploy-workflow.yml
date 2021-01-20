@@ -32,6 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Test with Maven
+        environment: pro-finances
         env:
           C_P_R_L: ${{ secrets.C_P_R_L }}
           C_S_J_S: ${{ secrets.C_S_J_S }}
